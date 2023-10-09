@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <label for="celsius">Celsius:</label>
+        <input type="number" id="celsius" placeholder="Enter temperature in Celsius">
+        <br>
+        <label for="fahrenheit">Fahrenheit:</label>
+        <input type="number" id="fahrenheit" placeholder="Enter temperature in Fahrenheit">
+        <br>
+        <button onclick="convertToCelsius()">Convert to Celsius</button>
+        <button onclick="convertToFahrenheit()">Convert to Fahrenheit</button>
+        <div id="result"></div>
+    </div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #050505;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 50px;
+            border: 1px solid #e3dede;
+            border-radius: 5px;
+            background-color: #d2a6e8;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 50px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #0074cc;
+            color: #dbeb91;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056a7;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+
+    <script>
+        function convertToCelsius() {
+            const fahrenheitInput = document.getElementById("fahrenheit");
+            const celsiusResult = document.getElementById("result");
+
+            if (fahrenheitInput.value !== "") {
+                const fahrenheit = parseFloat(fahrenheitInput.value);
+                const celsius = (fahrenheit - 32) * 5/9;
+                celsiusResult.textContent = `Celsius: ${celsius.toFixed(2)}°C`;
+            } else {
+                celsiusResult.textContent = "Please enter a value in Fahrenheit.";
+            }
+        }
+
+        function convertToFahrenheit() {
+            const celsiusInput = document.getElementById("celsius");
+            const fahrenheitResult = document.getElementById("result");
+
+            if (celsiusInput.value !== "") {
+                const celsius = parseFloat(celsiusInput.value);
+                const fahrenheit = (celsius * 9/5) + 32;
+                fahrenheitResult.textContent = `Fahrenheit: ${fahrenheit.toFixed(2)}°F`;
+            } else {
+                fahrenheitResult.textContent = "Please enter a value in Celsius.";
+            }
+        }
+    </script>
+</body>
+</html>
